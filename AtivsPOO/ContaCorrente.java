@@ -1,11 +1,10 @@
 public class ContaCorrente extends Conta {
     
     double limite;
+    
+    alterarLimite()
 
-    ContaCorrente(String numero, Pessoa titular, Gerente gerente, Data criacao) {
-        super(numero, titular, gerente, criacao);
-        this.limite = 200;
-    }
+    alterarLimite(String senha, double limite)
 
     /**
      * Retorna o valor disponível para saque dessa conta,
@@ -13,38 +12,6 @@ public class ContaCorrente extends Conta {
      */
     double disponivel() {
         return this.saldo + this.limite;
-    }
-
-    /**
-     * Tenta sacar o valor da conta, se ele estiver disponível;
-     * retorna se foi possível realizar o saque.
-     */
-    boolean sacar(double valor) {
-        if (this.disponivel() >= valor) {
-            this.saldo -= valor;
-
-            System.out.println("Saque de " + valor + " realizado com sucesso.");
-            System.out.println("Novo saldo: " + this.saldo);
-
-            return true;
-        }
-
-        System.out.println("Erro: nao foi possivel sacar " + valor);
-        System.out.println("Valor disponivel para saque: " + this.disponivel());
-        return false;
-    }
-
-    /**
-     * Tenta transferir o valor da conta atual para a conta
-     * destino, se o valor estiver disponível na primeira;
-     * retorna se foi possível realizar a transferência.
-     */
-    boolean transferir(double valor, Conta destino) {
-        if (this.sacar(valor)) {
-            destino.depositar(valor);
-            return true;
-        }
-        return false;
     }
 
     /**

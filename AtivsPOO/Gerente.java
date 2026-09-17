@@ -2,13 +2,17 @@ public class Gerente extends Pessoa {
 
     String matricula, senha;
 
+    Gerente()
+
     Gerente(
-        String nome, Data dtNasc, char sexo, String cpf, String matricula, String senha
+        String nome, Data nascimento, char sexo, String cpf, String matricula, String senha
     ) {
-        super(nome, dtNasc, sexo, cpf);
+        super(nome, nascimento, sexo, cpf);
         this.matricula = matricula;
         this.senha = senha;
     }
+
+    boolean validarAcesso()
 
     boolean validarAcesso(String s) {
         if (s.equals(this.senha)) {
