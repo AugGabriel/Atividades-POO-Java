@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Conta {
     
     String numero;
@@ -6,7 +8,21 @@ class Conta {
     double saldo;
     Gerente gerente;
 
-    Conta(Gerente gerente)
+    Conta(Gerente gerente) {
+        Scanner leitor = new Scanner(System.in);
+
+        this.titular = new Pessoa();
+        this.saldo = 0;
+        this.gerente = gerente;
+
+        System.out.println("Informe o número da conta: ");
+        this.numero = leitor.next();
+
+        System.out.println("Informe a data de criação da conta: ");
+        this.criacao = new Data();
+
+        leitor.close();
+    }
 
     Conta(String numero, Pessoa titular, Data criacao, Gerente gerente) {
         this.numero = numero;
