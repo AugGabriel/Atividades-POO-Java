@@ -1,10 +1,24 @@
+import java.util.Scanner;
+
 public class ContaCorrente extends Conta {
     
     double limite;
     
-    alterarLimite()
+    void alterarLimite() {
+        if (this.gerente.validarAcesso()) {
+            Scanner leitor = new Scanner(System.in);
 
-    alterarLimite(String senha, double limite)
+            this.limite = leitor.nextDouble();
+
+            leitor.close();
+        }
+    }
+
+    void alterarLimite(String senha, double limite) {
+        if (this.gerente.validarAcesso(senha)) {
+            this.limite = limite;
+        }
+    }
 
     /**
      * Retorna o valor disponível para saque dessa conta,

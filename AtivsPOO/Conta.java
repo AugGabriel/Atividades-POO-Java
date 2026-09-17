@@ -32,9 +32,11 @@ class Conta {
         this.saldo = 0;
     }
 
-    double disponivel()
+    double disponivel() {
+        return this.saldo;
+    }
 
-    void extrato()
+    void extrato() {}
 
     void depositar(double valor) {
         this.saldo += valor;
