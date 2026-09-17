@@ -6,13 +6,13 @@ public class Data {
     Data() {
         Scanner leitor = new Scanner(System.in);
 
-        System.out.println("Informe o dia: ");
+        System.out.println("Digite o dia: ");
         this.dia = leitor.nextInt();
 
-        System.out.println("Informe o mês: ");
+        System.out.println("Digite o mês: ");
         this.mes = leitor.nextInt();
         
-        System.out.println("Informe o ano: ");
+        System.out.println("Digite o ano: ");
         this.ano = leitor.nextInt();
 
         leitor.close();

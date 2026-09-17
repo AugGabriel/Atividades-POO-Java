@@ -12,7 +12,7 @@ class Pessoa {
         System.out.println("Informe o nome: ");
         this.nome = leitor.nextLine();
 
-        System.out.println("Digite a data de nascimento: ");
+        System.out.println("Informe a data de nascimento: ");
         this.nascimento = new Data();
 
         System.out.println("Informe o sexo: ");

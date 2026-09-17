@@ -1,8 +1,22 @@
+import java.util.Scanner;
+
 public class Gerente extends Pessoa {
 
     String matricula, senha;
 
-    Gerente()
+    Gerente() {
+        super();
+
+        Scanner leitor = new Scanner(System.in);
+
+        System.out.println("Informe a matrícula: ");
+        this.matricula = leitor.next();
+
+        this.senha = "123456";
+        System.out.println("Senha temporária: " + this.senha);
+
+        leitor.close();
+    }
 
     Gerente(
         String nome, Data nascimento, char sexo, String cpf, String matricula, String senha
