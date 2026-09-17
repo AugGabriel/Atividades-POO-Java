@@ -9,20 +9,19 @@ class Pessoa {
     Pessoa() {
         Scanner leitor = new Scanner(System.in);
 
-        System.out.println("Informe o nome: ");
+        System.out.print("Informe o nome: ");
         this.nome = leitor.nextLine();
 
         System.out.println("Informe a data de nascimento: ");
         this.nascimento = new Data();
 
-        System.out.println("Informe o sexo: ");
+        System.out.print("Informe o sexo: ");
         this.sexo = leitor.next().charAt(0);
 
-        System.out.println("Informe o cpf: ");
+        System.out.print("Informe o cpf: ");
         this.cpf = leitor.next();
 
-        leitor.close();
-        System.out.println("Nova pessoa criada no sistema.");   
+        System.out.println("Nova pessoa criada no sistema.\n");   
     }
     
     Pessoa(String nome, Data nascimento, char sexo, String cpf) {
@@ -30,7 +29,7 @@ class Pessoa {
         this.nascimento = nascimento;
         this.sexo = sexo;
         this.cpf = cpf;
-        System.out.println("Nova pessoa criada no sistema.");   
+        System.out.println("Nova pessoa criada no sistema.\n");   
     }
 
     int idade(Data hoje) {

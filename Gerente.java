@@ -9,13 +9,13 @@ public class Gerente extends Pessoa {
 
         Scanner leitor = new Scanner(System.in);
 
-        System.out.println("Informe a matrícula: ");
+        System.out.print("Informe a matrícula: ");
         this.matricula = leitor.next();
 
         this.senha = "123456";
-        System.out.println("Senha temporária: " + this.senha);
+        System.out.print("Senha temporária: " + this.senha);
 
-        leitor.close();
+        System.out.println();
     }
 
     Gerente(
@@ -40,8 +40,6 @@ public class Gerente extends Pessoa {
 
         System.out.println("Digite a senha: ");
         String senha = leitor.next();
-
-        leitor.close();
 
         return this.validarAcesso(senha);
     }

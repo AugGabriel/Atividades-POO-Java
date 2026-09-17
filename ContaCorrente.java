@@ -19,8 +19,6 @@ public class ContaCorrente extends Conta {
             Scanner leitor = new Scanner(System.in);
 
             this.limite = leitor.nextDouble();
-
-            leitor.close();
         }
     }
 

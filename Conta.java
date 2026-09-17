@@ -15,13 +15,13 @@ class Conta {
         this.saldo = 0;
         this.gerente = gerente;
 
-        System.out.println("Informe o número da conta: ");
+        System.out.print("Informe o número da conta: ");
         this.numero = leitor.next();
 
-        System.out.println("Informe a data de criação da conta: ");
+        System.out.print("Informe a data de criação da conta: ");
         this.criacao = new Data();
 
-        leitor.close();
+        System.out.println();
     }
 
     Conta(String numero, Pessoa titular, Data criacao, Gerente gerente) {
@@ -39,13 +39,13 @@ class Conta {
     void extrato() {
         System.out.println("Conta: " + this.numero);
         System.out.println("Titular: " + this.titular.nome);
-        System.out.printf("Valor disponivel para saque : R$%.2f\n", this.disponivel());
+        System.out.printf("Valor disponivel para saque : R$%.2f\n\n", this.disponivel());
     }
 
     void depositar(double valor) {
         this.saldo += valor;
         System.out.println("Deposito de " + valor + " realizado com sucesso.");
-        System.out.println("Novo saldo: " + this.saldo);
+        System.out.printf("Novo saldo: R$%.2f\n\n", this.saldo);
     }
 
     /**
@@ -57,13 +57,13 @@ class Conta {
             this.saldo -= valor;
 
             System.out.println("Saque de " + valor + " realizado com sucesso.");
-            System.out.println("Novo saldo: " + this.saldo);
+            System.out.println("Novo saldo: " + this.saldo + "\n");
 
             return true;
         }
 
         System.out.println("Erro: nao foi possivel sacar " + valor);
-        System.out.println("Valor disponivel para saque: " + this.disponivel());
+        System.out.println("Valor disponivel para saque: " + this.disponivel() + "\n");
         return false;
     }
 
