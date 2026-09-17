@@ -1,7 +1,22 @@
+import java.util.Scanner;
+
 public class Data {
     int dia, mes, ano;
 
-    Data()
+    Data() {
+        Scanner leitor = new Scanner(System.in);
+
+        System.out.println("Informe o dia: ");
+        this.dia = leitor.nextInt();
+
+        System.out.println("Informe o mês: ");
+        this.mes = leitor.nextInt();
+        
+        System.out.println("Informe o ano: ");
+        this.ano = leitor.nextInt();
+
+        leitor.close();
+    }
 
     Data(int dia, int mes, int ano) {
         this.dia = dia;
