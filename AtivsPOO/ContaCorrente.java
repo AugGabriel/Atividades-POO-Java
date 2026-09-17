@@ -3,6 +3,16 @@ import java.util.Scanner;
 public class ContaCorrente extends Conta {
     
     double limite;
+
+    ContaCorrente(Gerente gerente) {
+        super(gerente);
+        this.limite = 200;
+    }
+
+    ContaCorrente(String numero, Pessoa titular, Data criacao, Gerente gerente) {
+        super(numero, titular, criacao, gerente);
+        this.limite = 200;
+    }
     
     void alterarLimite() {
         if (this.gerente.validarAcesso()) {
