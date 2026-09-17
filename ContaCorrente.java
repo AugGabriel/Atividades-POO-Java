@@ -18,10 +18,11 @@ public class ContaCorrente extends Conta {
         if (this.gerente.validarAcesso()) {
             Scanner leitor = new Scanner(System.in);
 
+            System.out.println("Informe o novo limite: ");
             this.limite = leitor.nextDouble();
         }
     }
-
+    
     void alterarLimite(String senha, double limite) {
         if (this.gerente.validarAcesso(senha)) {
             this.limite = limite;

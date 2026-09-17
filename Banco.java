@@ -36,6 +36,7 @@ class Banco {
             poupanca2.rendimentos(0.5);
         }
 
+        contaCorrente1.alterarLimite("123456", 5000);
         System.out.println("Disponível na poupança 1: " + poupanca1.disponivel());
         poupanca1.transferir(-100, poupanca2);
         contaCorrente2.transferir(-200, poupanca2);
