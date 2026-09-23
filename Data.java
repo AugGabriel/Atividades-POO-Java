@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Data {
+    
     private int dia, mes, ano;
 
     public Data() {

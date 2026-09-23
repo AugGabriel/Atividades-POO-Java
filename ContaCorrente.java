@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class ContaCorrente extends Conta {
     
     private double limite;
