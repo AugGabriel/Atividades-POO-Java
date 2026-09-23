@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class Data {
-    int dia, mes, ano;
+    private int dia, mes, ano;
 
-    Data() {
+    public Data() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.print("Digite o dia: ");
@@ -18,13 +18,13 @@ public class Data {
         System.out.println();
     }
 
-    Data(int dia, int mes, int ano) {
+    public Data(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
     }
 
-    boolean maior(Data d2) {
+    public boolean maior(Data d2) {
         if (d2.ano != this.ano) {
             return d2.ano > this.ano;
         }
@@ -34,7 +34,7 @@ public class Data {
         return d2.dia > this.dia;
     }
 
-    void imprimir() {
+    public void imprimir() {
         System.out.println(this.dia + "/" + this.mes + "/" + this.ano);
     }
 }

@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 class Pessoa {
 
-    String nome, cpf;
-    char sexo;
-    Data nascimento;
+    private String nome, cpf;
+    private char sexo;
+    private Data nascimento;
 
-    Pessoa() {
+    public Pessoa() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.print("Informe o nome: ");
@@ -24,7 +24,7 @@ class Pessoa {
         System.out.println("Nova pessoa criada no sistema.\n");   
     }
     
-    Pessoa(String nome, Data nascimento, char sexo, String cpf) {
+    public Pessoa(String nome, Data nascimento, char sexo, String cpf) {
         this.nome = nome;
         this.nascimento = nascimento;
         this.sexo = sexo;
@@ -32,7 +32,7 @@ class Pessoa {
         System.out.println("Nova pessoa criada no sistema.\n");   
     }
 
-    int idade(Data hoje) {
+    public int idade(Data hoje) {
         int idade = hoje.ano - this.nascimento.ano;
 
         Data aniversario = new Data(

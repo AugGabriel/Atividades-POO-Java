@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Gerente extends Pessoa {
 
-    String matricula, senha;
+    private String matricula, senha;
 
-    Gerente() {
+    public Gerente() {
         super();
 
         Scanner leitor = new Scanner(System.in);
@@ -18,7 +18,7 @@ public class Gerente extends Pessoa {
         System.out.println();
     }
 
-    Gerente(
+    public Gerente(
         String nome, Data nascimento, char sexo, String cpf, String matricula, String senha
     ) {
         super(nome, nascimento, sexo, cpf);
@@ -26,7 +26,7 @@ public class Gerente extends Pessoa {
         this.senha = senha;
     }
 
-    boolean validarAcesso(String s) {
+    public boolean validarAcesso(String s) {
         if (s.equals(this.senha)) {
             System.out.println("Senha correta!");
             return true;
@@ -35,12 +35,20 @@ public class Gerente extends Pessoa {
         return false;
     }
 
-    boolean validarAcesso() {
+    public boolean validarAcesso() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Digite a senha: ");
         String senha = leitor.next();
 
         return this.validarAcesso(senha);
+    }
+
+    public boolean alterarSenha(String atual, String nova) {
+        if (this.validarAcesso(atual)) {
+            this.senha = nova;
+            return true;
+        }
+        return false;
     }
 }

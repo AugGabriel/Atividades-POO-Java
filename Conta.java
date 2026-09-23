@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 class Conta {
     
-    String numero;
-    Pessoa titular;
-    Data criacao;
-    double saldo;
-    Gerente gerente;
+    protected String numero;
+    protected Pessoa titular;
+    protected Data criacao;
+    protected double saldo;
+    protected Gerente gerente;
 
-    Conta(Gerente gerente) {
+    public Conta(Gerente gerente) {
         Scanner leitor = new Scanner(System.in);
 
         this.titular = new Pessoa();
@@ -24,7 +24,7 @@ class Conta {
         System.out.println();
     }
 
-    Conta(String numero, Pessoa titular, Data criacao, Gerente gerente) {
+    public Conta(String numero, Pessoa titular, Data criacao, Gerente gerente) {
         this.numero = numero;
         this.titular = titular;
         this.gerente = gerente;
@@ -32,17 +32,17 @@ class Conta {
         this.saldo = 0;
     }
 
-    double disponivel() {
+    protected double disponivel() {
         return this.saldo;
     }
 
-    void extrato() {
+    public void extrato() {
         System.out.println("Conta: " + this.numero);
         System.out.println("Titular: " + this.titular.nome);
         System.out.printf("Valor disponivel para saque : R$%.2f\n\n", this.disponivel());
     }
 
-    void depositar(double valor) {
+    public void depositar(double valor) {
         this.saldo += valor;
         System.out.println("Deposito de " + valor + " realizado com sucesso.");
         System.out.printf("Novo saldo: R$%.2f\n\n", this.saldo);
@@ -52,7 +52,7 @@ class Conta {
      * Tenta sacar o valor da conta, se ele estiver disponível;
      * retorna se foi possível realizar o saque.
      */
-    boolean sacar(double valor) {
+    public boolean sacar(double valor) {
         if (this.disponivel() >= valor) {
             this.saldo -= valor;
 
@@ -72,7 +72,7 @@ class Conta {
      * destino, se o valor estiver disponível na primeira;
      * retorna se foi possível realizar a transferência.
      */
-    boolean transferir(double valor, Conta destino) {
+    public boolean transferir(double valor, Conta destino) {
         if (this.sacar(valor)) {
             destino.depositar(valor);
             return true;
