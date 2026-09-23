@@ -32,11 +32,15 @@ class Pessoa {
         System.out.println("Nova pessoa criada no sistema.\n");   
     }
 
+    public String getNome() {
+        return this.nome;
+    }
+
     public int idade(Data hoje) {
-        int idade = hoje.ano - this.nascimento.ano;
+        int idade = hoje.getAno() - this.nascimento.getAno();
 
         Data aniversario = new Data(
-            this.nascimento.dia, this.nascimento.mes, hoje.ano
+            this.nascimento.getDia(), this.nascimento.getMes(), hoje.getAno()
         );
 
         if (hoje.maior(aniversario)) {

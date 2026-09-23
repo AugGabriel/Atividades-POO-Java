@@ -24,6 +24,10 @@ public class Data {
         this.ano = ano;
     }
 
+    public int getDia() { return this.dia; }
+    public int getMes() { return this.mes; }
+    public int getAno() { return this.ano; }
+
     public boolean maior(Data d2) {
         if (d2.ano != this.ano) {
             return d2.ano > this.ano;

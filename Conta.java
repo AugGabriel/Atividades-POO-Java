@@ -38,7 +38,7 @@ class Conta {
 
     public void extrato() {
         System.out.println("Conta: " + this.numero);
-        System.out.println("Titular: " + this.titular.nome);
+        System.out.println("Titular: " + this.titular.getNome());
         System.out.printf("Valor disponivel para saque : R$%.2f\n\n", this.disponivel());
     }
 
