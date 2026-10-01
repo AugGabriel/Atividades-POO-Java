@@ -41,6 +41,10 @@ public class Leitor {
         return leitor.next().charAt(0);
     }
 
+    public static int proximoInteiro() {
+        return leitor.nextInt();
+    }
+
     public static void fechar() {
         leitor.close();
     }

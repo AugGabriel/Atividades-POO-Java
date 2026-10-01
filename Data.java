@@ -1,20 +1,17 @@
-import java.util.Scanner;
-
 public class Data {
     
     private int dia, mes, ano;
 
     public Data() {
-        Scanner leitor = new Scanner(System.in);
 
         System.out.print("Digite o dia: ");
-        this.dia = leitor.nextInt();
+        this.dia = Leitor.proximoInteiro();
 
         System.out.print("Digite o mês: ");
-        this.mes = leitor.nextInt();
+        this.mes = Leitor.proximoInteiro();
         
         System.out.print("Digite o ano: ");
-        this.ano = leitor.nextInt();
+        this.ano = Leitor.proximoInteiro();
 
         System.out.println();
     }

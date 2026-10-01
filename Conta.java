@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 class Conta {
     
     protected String numero;
@@ -9,14 +7,12 @@ class Conta {
     protected Gerente gerente;
 
     public Conta(Gerente gerente) {
-        Scanner leitor = new Scanner(System.in);
-
         this.titular = new Pessoa();
         this.saldo = 0;
         this.gerente = gerente;
 
         System.out.print("Informe o número da conta: ");
-        this.numero = leitor.next();
+        this.numero = Leitor.proximaPalavra();
 
         System.out.print("Informe a data de criação da conta: ");
         this.criacao = new Data();
