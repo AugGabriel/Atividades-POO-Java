@@ -1,50 +1,57 @@
+import java.util.ArrayList;
+
 class Banco {
 
+    private static ArrayList<Pessoa> pessoas = new ArrayList<>();
+    private static ArrayList<Gerente> gerentes = new ArrayList<>();
+    private static ArrayList<ContaCorrente> contasCorrentes = new ArrayList<>();
+    private static ArrayList<Poupanca> poupancas = new ArrayList<>();
+
+    private static char entrada = ' ';
+
     public static void main(String[] args) {
-        Data data1 = new Data();
-        Data data2 = new Data();
 
-        Pessoa pessoa1 = new Pessoa();
-        Pessoa pessoa2 = new Pessoa();
+        System.out.println("Bem vindo!");
 
-        Gerente gerente1 = new Gerente();
-        Gerente gerente2 = new Gerente();
 
-        ContaCorrente contaCorrente1 = new ContaCorrente("1", pessoa1, data1, gerente1);
-        ContaCorrente contaCorrente2 = new ContaCorrente("2", pessoa2, data2, gerente2);
-
-        Poupanca poupanca1 = new Poupanca("1", pessoa1, data1, gerente1);
-        Poupanca poupanca2 = new Poupanca("2", pessoa2, data2, gerente2);
-
-        // Datas
-        data1.imprimir();
-        data2.imprimir();
-
-        Data hoje = new Data(17, 9, 2026);
-        System.out.println(pessoa1.idade(hoje));
-        System.out.println(pessoa2.idade(hoje));
-        System.out.println(gerente1.idade(hoje));
-        System.out.println(gerente2.idade(hoje));
-
-        // Transferências
-        contaCorrente1.depositar(500);
-        contaCorrente1.sacar(1000);
-        contaCorrente1.transferir(700, poupanca2);
-
-        for (int i = 0; i < 10; i++) {
-            contaCorrente1.chequeEspecial(1);
-            poupanca2.rendimentos(0.5);
+        while (entrada != '0') {
+            entrada = Leitor.menuInicial();
+            
+            if (entrada == '1') {
+                Banco.cadastro();
+            }
+            else if (entrada == '2') {
+                Banco.movimentacao();
+            }
+            else if (entrada != '0') {
+                System.out.println("Opção inválida!");
+            }
         }
 
-        contaCorrente1.alterarLimite("123456", 5000);
-        System.out.println("Disponível na poupança 1: " + poupanca1.disponivel());
-        poupanca1.transferir(-100, poupanca2);
-        contaCorrente2.transferir(-200, poupanca2);
+        System.out.println("Até mais!");
+        Leitor.fechar();
+    }
 
-        // Extrato
-        contaCorrente1.extrato();
-        contaCorrente2.extrato();
-        poupanca1.extrato();
-        poupanca2.extrato();
+    public static void cadastro() {
+        entrada = Leitor.menuCadastro();
+
+        if (entrada == 'a') {
+            pessoas.add(new Pessoa());
+        }
+        if (entrada == 'b') {
+            gerentes.add(new Gerente());
+        }
+        if (entrada == 'c') {}
+        if (entrada == 'd') {}
+    }
+
+    public static void movimentacao() {
+        entrada = Leitor.menuMovimentacao();
+
+        if (entrada == 'a') {}
+        if (entrada == 'b') {}
+        if (entrada == 'c') {}
+        if (entrada == 'd') {}
     }
 }
+        
