@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Gerente extends Pessoa {
 
     private String matricula, senha;
@@ -7,10 +5,8 @@ public class Gerente extends Pessoa {
     public Gerente() {
         super();
 
-        Scanner leitor = new Scanner(System.in);
-
         System.out.print("Informe a matrícula: ");
-        this.matricula = leitor.next();
+        this.matricula = Leitor.proximaPalavra();
 
         this.senha = "123456";
         System.out.print("Senha temporária: " + this.senha);
@@ -36,10 +32,8 @@ public class Gerente extends Pessoa {
     }
 
     public boolean validarAcesso() {
-        Scanner leitor = new Scanner(System.in);
-
         System.out.println("Digite a senha: ");
-        String senha = leitor.next();
+        String senha = Leitor.proximaPalavra();
 
         return this.validarAcesso(senha);
     }

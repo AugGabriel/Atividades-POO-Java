@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 class Pessoa {
 
     private String nome, cpf;
@@ -7,19 +5,17 @@ class Pessoa {
     private Data nascimento;
 
     public Pessoa() {
-        Scanner leitor = new Scanner(System.in);
-
         System.out.print("Informe o nome: ");
-        this.nome = leitor.nextLine();
+        this.nome = Leitor.proximaLinha();
 
         System.out.println("Informe a data de nascimento: ");
         this.nascimento = new Data();
 
         System.out.print("Informe o sexo: ");
-        this.sexo = leitor.next().charAt(0);
+        this.sexo = Leitor.proximoCaractere();
 
         System.out.print("Informe o cpf: ");
-        this.cpf = leitor.next();
+        this.cpf = Leitor.proximaPalavra();
 
         System.out.println("Nova pessoa criada no sistema.\n");   
     }
