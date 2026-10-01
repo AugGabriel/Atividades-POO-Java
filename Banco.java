@@ -18,10 +18,10 @@ class Banco {
             entrada = Leitor.menuInicial();
             
             if (entrada == '1') {
-                Banco.cadastro();
+                cadastro();
             }
             else if (entrada == '2') {
-                Banco.movimentacao();
+                movimentacao();
             }
             else if (entrada != '0') {
                 System.out.println("Opção inválida!");
