@@ -79,8 +79,7 @@ class Banco {
             }
             else if (entrada == 'b') {
                 System.out.println("Informe o valor para depositar: ");
-                conta.depositar(Leitor.proximoInteiro());
-                resultado = true;
+                resultado = conta.depositar(Leitor.proximoInteiro());
             }
             else if (entrada == 'c') {
                 System.out.println("Informe o valor para sacar: ");

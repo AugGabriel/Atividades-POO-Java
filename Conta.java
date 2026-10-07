@@ -38,10 +38,16 @@ class Conta {
         System.out.printf("Valor disponivel para saque : R$%.2f\n\n", this.disponivel());
     }
 
-    public void depositar(double valor) {
+    public boolean depositar(double valor) {
+        if (valor < 0) {
+            System.out.println("Não é possível realizar depósitos com valores negativos");
+            return false;
+        }
+
         this.saldo += valor;
         System.out.println("Deposito de " + valor + " realizado com sucesso.");
         System.out.printf("Novo saldo: R$%.2f\n\n", this.saldo);
+        return true;
     }
 
     /**
@@ -49,6 +55,11 @@ class Conta {
      * retorna se foi possível realizar o saque.
      */
     public boolean sacar(double valor) {
+        if (valor < 0) {
+            System.out.println("Não é possível realizar saques com valores negativos");
+            return false;
+        }
+
         if (this.disponivel() >= valor) {
             this.saldo -= valor;
 
