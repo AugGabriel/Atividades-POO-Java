@@ -22,6 +22,8 @@ public class Gerente extends Pessoa {
         this.senha = senha;
     }
 
+    public String getMatricula() { return matricula; }
+
     public boolean validarAcesso(String s) {
         if (s.equals(this.senha)) {
             System.out.println("Senha correta!");

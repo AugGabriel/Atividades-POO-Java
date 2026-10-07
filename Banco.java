@@ -41,8 +41,29 @@ class Banco {
         if (entrada == 'b') {
             gerentes.add(new Gerente());
         }
-        if (entrada == 'c') {}
-        if (entrada == 'd') {}
+        if (entrada == 'c' || entrada == 'd') {
+            if (gerentes.isEmpty()) {
+                System.out.println("Cadastre um gerente primeiro!");
+                return;
+            }
+
+            System.out.println("Escolha um gerente:");
+            for (int i = 1; i < gerentes.size() - 1; i++) {
+                Gerente gerente = gerentes.get(i - 1);
+                System.out.println(
+                    i + ") " + gerente.getMatricula() + " - " + gerente.getNome()
+                );
+            }
+
+            Gerente gerente = gerentes.get(Leitor.proximoInteiro() - 1);
+            
+            if (entrada == 'c') {
+                contasCorrentes.add(new ContaCorrente(gerente));
+            }
+            else {
+                poupancas.add(new Poupanca(gerente));
+            }
+        }
     }
 
     public static void movimentacao() {
