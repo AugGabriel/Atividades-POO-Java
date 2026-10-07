@@ -86,6 +86,7 @@ class Banco {
                 resultado = conta.sacar(Leitor.proximoInteiro());
             }
         }
+
         else if (entrada == 'd') {
             Conta remetente = obterContaEntrada("Selecione a conta remetente: ");
             Conta destinatario = obterContaEntrada("Selecione a conta destinatária: ");
@@ -93,6 +94,7 @@ class Banco {
             System.out.println("Informe o valor da transferência: ");
             resultado = remetente.transferir(Leitor.proximoDouble(), destinatario);
         }
+        
         else {
             System.out.println("Entrada inválida!");
         }

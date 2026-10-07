@@ -80,6 +80,11 @@ class Conta {
      * retorna se foi possível realizar a transferência.
      */
     public boolean transferir(double valor, Conta destino) {
+        if (destino == this) {
+            System.out.println("Não é possível realizar transferências para a mesma conta");
+            return false;
+        }
+
         if (this.sacar(valor)) {
             destino.depositar(valor);
             return true;
