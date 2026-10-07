@@ -15,7 +15,7 @@ class Banco {
 
 
         while (entrada != '0') {
-            entrada = Leitor.menuInicial();
+            entrada = Menu.menuInicial();
             
             if (entrada == '1') {
                 cadastro();
@@ -33,7 +33,7 @@ class Banco {
     }
 
     public static void cadastro() {
-        entrada = Leitor.menuCadastro();
+        entrada = Menu.menuCadastro();
 
         if (entrada == 'a') {
             pessoas.add(new Pessoa());
@@ -46,7 +46,7 @@ class Banco {
     }
 
     public static void movimentacao() {
-        entrada = Leitor.menuMovimentacao();
+        entrada = Menu.menuMovimentacao();
 
         if (entrada == 'a') {}
         if (entrada == 'b') {}
