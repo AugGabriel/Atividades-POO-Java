@@ -15,6 +15,10 @@ public class Leitor {
         return leitor.next().charAt(0);
     }
 
+    public static double proximoDouble() {
+        return leitor.nextDouble();
+    }
+
     public static int proximoInteiro() {
         return leitor.nextInt();
     }
