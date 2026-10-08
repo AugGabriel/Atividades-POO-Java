@@ -13,7 +13,6 @@ class Banco {
 
         System.out.println("Bem vindo!");
 
-
         while (entrada != '0') {
             entrada = Menu.menuInicial();
             

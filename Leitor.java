@@ -14,8 +14,11 @@ public class Leitor {
         return leitor.nextLine().substring(0, 1);
     }
 
-    public static char proximoCaractere() {
-        return leitor.next().charAt(0);
+    /**
+     * Lê uma linha inteira e retorna apenas o primeiro caractere
+     */
+    public static char primeiroCaractere() {
+        return leitor.nextLine().charAt(0);
     }
 
     /**
