@@ -4,13 +4,13 @@ public class Data {
 
     public Data() {
 
-        System.out.print("Digite o dia: ");
+        System.out.print("\tDigite o dia: ");
         this.dia = Leitor.proximoInteiro();
 
-        System.out.print("Digite o mês: ");
+        System.out.print("\tDigite o mês: ");
         this.mes = Leitor.proximoInteiro();
         
-        System.out.print("Digite o ano: ");
+        System.out.print("\tDigite o ano: ");
         this.ano = Leitor.proximoInteiro();
 
         System.out.println();

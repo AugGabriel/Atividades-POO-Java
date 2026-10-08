@@ -37,10 +37,10 @@ class Banco {
         if (entrada == 'a') {
             pessoas.add(new Pessoa());
         }
-        if (entrada == 'b') {
+        else if (entrada == 'b') {
             gerentes.add(new Gerente());
         }
-        if (entrada == 'c' || entrada == 'd') {
+        else if (entrada == 'c' || entrada == 'd') {
             // Validações
             if (gerentes.isEmpty()) {
                 System.out.println("\nCadastre um gerente primeiro!\n");
