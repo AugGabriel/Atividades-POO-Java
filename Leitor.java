@@ -19,8 +19,13 @@ public class Leitor {
         return leitor.nextDouble();
     }
 
+    /**
+     * Interface para o `nextInt`, porém consome o enter que fica no buffer de entrada.
+     */
     public static int proximoInteiro() {
-        return leitor.nextInt();
+        int entrada = leitor.nextInt();
+        leitor.nextLine();
+        return entrada;
     }
 
     public static void fechar() {
