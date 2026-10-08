@@ -42,11 +42,17 @@ class Banco {
             gerentes.add(new Gerente());
         }
         if (entrada == 'c' || entrada == 'd') {
+            // Validações
             if (gerentes.isEmpty()) {
                 System.out.println("\nCadastre um gerente primeiro!\n");
                 return;
             }
+            if (pessoas.isEmpty()) {
+                System.out.println("Cadastre uma pessoa primeiro!\n");
+                return;
+            }
 
+            // Escolha do gerente
             System.out.println("Escolha um gerente:");
             for (int i = 1; i <= gerentes.size() - 1; i++) {
                 Gerente gerente = gerentes.get(i - 1);
@@ -55,14 +61,41 @@ class Banco {
                 );
             }
 
-            Gerente gerente = gerentes.get(Leitor.proximoInteiro() - 1);
+            int escolhaGerente = Leitor.proximoInteiro() - 1;
+            if (escolhaGerente > gerentes.size()) {
+                System.out.println("\nEscolha inválida\n");
+                return;
+            }
+            Gerente gerente = gerentes.get(escolhaGerente);
+
+            // Escolha da pessoa
+            System.out.println("Escolha uma pessoa:");
+            for (int i = 1; i <= pessoas.size() - 1; i++) {
+                Pessoa pessoa = pessoas.get(i - 1);
+                System.out.println(
+                    i + ") " + pessoa.getCpf() + " - " + pessoa.getNome()
+                );
+            }
+
+            int escolhaPessoa = Leitor.proximoInteiro() - 1;
+            if (escolhaPessoa > pessoas.size()) {
+                System.out.println("\nEscolha inválida!\n");
+                return;
+            }
+            Pessoa titular = pessoas.get(escolhaPessoa);
             
+            // Menus
             if (entrada == 'c') {
-                contasCorrentes.add(new ContaCorrente(gerente));
+                contasCorrentes.add(new ContaCorrente(gerente, titular));
             }
             else {
-                poupancas.add(new Poupanca(gerente));
+                poupancas.add(new Poupanca(gerente, titular));
             }
+        }
+
+        else {
+            System.out.println("\nEntrada inválida!\n");
+            return;
         }
     }
 
@@ -115,6 +148,7 @@ class Banco {
         
         else {
             System.out.println("\nEntrada inválida!\n");
+            return;
         }
 
         if (resultado) {
