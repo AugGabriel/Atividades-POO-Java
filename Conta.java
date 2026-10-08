@@ -6,8 +6,8 @@ class Conta {
     protected double saldo;
     protected Gerente gerente;
 
-    public Conta(Gerente gerente) {
-        this.titular = new Pessoa();
+    public Conta(Gerente gerente, Pessoa titular) {
+        this.titular = titular;
         this.saldo = 0;
         this.gerente = gerente;
 

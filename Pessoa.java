@@ -32,6 +32,10 @@ class Pessoa {
         return this.nome;
     }
 
+    public String getCpf() {
+        return this.cpf;
+    }
+
     public int idade(Data hoje) {
         int idade = hoje.getAno() - this.nascimento.getAno();
 

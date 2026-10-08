@@ -2,8 +2,8 @@ public class ContaCorrente extends Conta {
     
     private double limite;
 
-    public ContaCorrente(Gerente gerente) {
-        super(gerente);
+    public ContaCorrente(Gerente gerente, Pessoa titular) {
+        super(gerente, titular);
         this.limite = 200;
     }
 

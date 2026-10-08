@@ -1,7 +1,7 @@
 public class Poupanca extends Conta {
 
-    public Poupanca(Gerente gerente) {
-        super(gerente);
+    public Poupanca(Gerente gerente, Pessoa titular) {
+        super(gerente, titular);
     } 
 
     public Poupanca(String numero, Pessoa titular, Data criacao, Gerente gerente) {
