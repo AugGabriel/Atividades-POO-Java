@@ -10,7 +10,7 @@ public class Menu {
         System.out.println("1) Cadastro");
         System.out.println("2) Movimentações financeiras");
             
-        return Leitor.proximoCaractere();
+        return Leitor.primeiroCaractere();
     }
     
     /**
@@ -26,7 +26,7 @@ public class Menu {
         System.out.println("c) Criar conta corrente");
         System.out.println("d) Criar poupança");
 
-        return Leitor.proximoCaractere();
+        return Leitor.primeiroCaractere();
     }
 
     /**
@@ -42,6 +42,6 @@ public class Menu {
         System.out.println("c) Sacar");
         System.out.println("d) Transferir");
 
-        return Leitor.proximoCaractere();
+        return Leitor.primeiroCaractere();
     }
 }

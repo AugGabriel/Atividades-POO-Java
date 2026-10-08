@@ -12,7 +12,7 @@ class Pessoa {
         this.nascimento = new Data();
 
         System.out.print("Informe o sexo: ");
-        this.sexo = Leitor.proximoCaractere();
+        this.sexo = Leitor.primeiroCaractere();
 
         System.out.print("Informe o cpf: ");
         this.cpf = Leitor.primeiraPalavra();
