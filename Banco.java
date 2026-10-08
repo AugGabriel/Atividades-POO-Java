@@ -38,7 +38,9 @@ class Banco {
             pessoas.add(new Pessoa());
         }
         else if (entrada == 'b') {
-            gerentes.add(new Gerente());
+            Gerente gerente = new Gerente();
+            gerentes.add(gerente);
+            pessoas.add(gerente);
         }
         else if (entrada == 'c' || entrada == 'd') {
             // Validações
