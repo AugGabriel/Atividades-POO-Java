@@ -67,6 +67,12 @@ class Banco {
     }
 
     public static void movimentacao() {
+        int numeroContas = contasCorrentes.size() + poupancas.size();
+        if (numeroContas == 0) {
+            System.out.println("Cadastre uma conta antes de realizar movimentações!");
+            return;
+        }
+
         entrada = Menu.menuMovimentacao();
         boolean resultado = false;
 
@@ -88,6 +94,13 @@ class Banco {
         }
 
         else if (entrada == 'd') {
+            if (numeroContas < 2) {
+                System.out.println(
+                    "Há apenas uma conta cadastrada no sistema, e não é possível realizar transferência!"
+                );
+                return;
+            }
+
             Conta remetente = obterContaEntrada("Selecione a conta remetente: ");
             Conta destinatario = obterContaEntrada("Selecione a conta destinatária: ");
 

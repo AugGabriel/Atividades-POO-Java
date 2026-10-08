@@ -1,1 +1,1 @@
-Implementar validação se pelo menos uma conta foi cadastrada antes do menu de transferências
+Validar que conta escolhida pelo usuário existe
