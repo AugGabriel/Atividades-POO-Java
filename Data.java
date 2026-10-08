@@ -12,8 +12,6 @@ public class Data {
         
         System.out.print("\tDigite o ano: ");
         this.ano = Leitor.proximoInteiro();
-
-        System.out.println();
     }
 
     public Data(int dia, int mes, int ano) {

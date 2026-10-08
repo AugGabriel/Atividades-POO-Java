@@ -9,7 +9,7 @@ public class Gerente extends Pessoa {
         this.matricula = Leitor.primeiraPalavra();
 
         this.senha = "123456";
-        System.out.print("Senha temporária: " + this.senha);
+        System.out.print("Senha temporária: " + this.senha + "\n");
 
         System.out.println();
     }
