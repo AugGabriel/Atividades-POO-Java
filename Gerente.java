@@ -6,7 +6,7 @@ public class Gerente extends Pessoa {
         super();
 
         System.out.print("Informe a matrícula: ");
-        this.matricula = Leitor.proximaPalavra();
+        this.matricula = Leitor.primeiraPalavra();
 
         this.senha = "123456";
         System.out.print("Senha temporária: " + this.senha);
@@ -35,7 +35,7 @@ public class Gerente extends Pessoa {
 
     public boolean validarAcesso() {
         System.out.println("Digite a senha: ");
-        String senha = Leitor.proximaPalavra();
+        String senha = Leitor.primeiraPalavra();
 
         return this.validarAcesso(senha);
     }

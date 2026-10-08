@@ -15,7 +15,7 @@ class Pessoa {
         this.sexo = Leitor.proximoCaractere();
 
         System.out.print("Informe o cpf: ");
-        this.cpf = Leitor.proximaPalavra();
+        this.cpf = Leitor.primeiraPalavra();
 
         System.out.println("Nova pessoa criada no sistema.\n");   
     }

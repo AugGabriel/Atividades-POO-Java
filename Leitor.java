@@ -7,16 +7,24 @@ public class Leitor {
         return leitor.nextLine();
     }
 
-    public static String proximaPalavra() {
-        return leitor.next();
+    /**
+     * Lê uma linha inteira e retorna apenas a primeira palavra.
+     */
+    public static String primeiraPalavra() {
+        return leitor.nextLine().substring(0, 1);
     }
 
     public static char proximoCaractere() {
         return leitor.next().charAt(0);
     }
 
+    /**
+     * Interface para o `nextDouble`, porém consome o enter que fica no buffer de entrada.
+     */
     public static double proximoDouble() {
-        return leitor.nextDouble();
+        double entrada = leitor.nextDouble();
+        leitor.nextLine();
+        return entrada;
     }
 
     /**

@@ -12,7 +12,7 @@ class Conta {
         this.gerente = gerente;
 
         System.out.print("Informe o número da conta: ");
-        this.numero = Leitor.proximaPalavra();
+        this.numero = Leitor.primeiraPalavra();
 
         System.out.print("Informe a data de criação da conta: ");
         this.criacao = new Data();
