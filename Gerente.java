@@ -26,10 +26,10 @@ public class Gerente extends Pessoa {
 
     public boolean validarAcesso(String s) {
         if (s.equals(this.senha)) {
-            System.out.println("Senha correta!");
+            System.out.println("\nSenha correta!\n");
             return true;
         }
-        System.out.println("Senha incorreta!");
+        System.out.println("\nSenha incorreta!\n");
         return false;
     }
 

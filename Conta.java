@@ -40,12 +40,12 @@ class Conta {
 
     public boolean depositar(double valor) {
         if (valor < 0) {
-            System.out.println("Não é possível realizar depósitos com valores negativos");
+            System.out.println("\nNão é possível realizar depósitos com valores negativos\n");
             return false;
         }
 
         this.saldo += valor;
-        System.out.println("Deposito de " + valor + " realizado com sucesso.");
+        System.out.println("Depósito de " + valor + " realizado com sucesso.");
         System.out.printf("Novo saldo: R$%.2f\n\n", this.saldo);
         return true;
     }
@@ -56,7 +56,7 @@ class Conta {
      */
     public boolean sacar(double valor) {
         if (valor < 0) {
-            System.out.println("Não é possível realizar saques com valores negativos");
+            System.out.println("\nNão é possível realizar saques com valores negativos\n");
             return false;
         }
 
@@ -81,7 +81,7 @@ class Conta {
      */
     public boolean transferir(double valor, Conta destino) {
         if (destino == this) {
-            System.out.println("Não é possível realizar transferências para a mesma conta");
+            System.out.println("\nNão é possível realizar transferências para a mesma conta\n");
             return false;
         }
 

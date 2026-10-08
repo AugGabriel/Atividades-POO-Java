@@ -24,11 +24,11 @@ class Banco {
                 movimentacao();
             }
             else if (entrada != '0') {
-                System.out.println("Opção inválida!");
+                System.out.println("\nOpção inválida!\n");
             }
         }
 
-        System.out.println("Até mais!");
+        System.out.println("\nAté mais!");
         Leitor.fechar();
     }
 
@@ -43,7 +43,7 @@ class Banco {
         }
         if (entrada == 'c' || entrada == 'd') {
             if (gerentes.isEmpty()) {
-                System.out.println("Cadastre um gerente primeiro!");
+                System.out.println("\nCadastre um gerente primeiro!\n");
                 return;
             }
 
@@ -69,7 +69,7 @@ class Banco {
     public static void movimentacao() {
         int numeroContas = contasCorrentes.size() + poupancas.size();
         if (numeroContas == 0) {
-            System.out.println("Cadastre uma conta antes de realizar movimentações!");
+            System.out.println("\nCadastre uma conta antes de realizar movimentações!\n");
             return;
         }
 
@@ -99,7 +99,7 @@ class Banco {
         else if (entrada == 'd') {
             if (numeroContas < 2) {
                 System.out.println(
-                    "Há apenas uma conta cadastrada no sistema, e não é possível realizar transferência!"
+                    "\nHá apenas uma conta cadastrada no sistema, e não é possível realizar transferência!\n"
                 );
                 return;
             }
@@ -114,14 +114,14 @@ class Banco {
         }
         
         else {
-            System.out.println("Entrada inválida!");
+            System.out.println("\nEntrada inválida!\n");
         }
 
         if (resultado) {
-            System.out.println("Operação realizada com sucesso!");
+            System.out.println("\nOperação realizada com sucesso!\n");
         }
         else {
-            System.out.println("Operação falhou!");
+            System.out.println("\nOperação falhou!\n");
         }
     }
     
@@ -144,7 +144,7 @@ class Banco {
             conta = poupancas.get(index_resposta - contasCorrentes.size());
         }
         else {
-            System.out.println("Conta inválida!");
+            System.out.println("\nConta inválida!\n");
             return null;
         }
 
