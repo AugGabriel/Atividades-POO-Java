@@ -1,1 +1,0 @@
-Validar que conta escolhida pelo usuário existe

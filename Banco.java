@@ -78,6 +78,9 @@ class Banco {
 
         if (entrada == 'a' || entrada == 'b' || entrada == 'c') {
             Conta conta = obterContaEntrada("Selecione a conta: ");
+            if (conta == null) {
+                return;
+            }
 
             if (entrada == 'a') {
                 conta.extrato();
@@ -102,7 +105,9 @@ class Banco {
             }
 
             Conta remetente = obterContaEntrada("Selecione a conta remetente: ");
+            if (remetente == null) { return; }
             Conta destinatario = obterContaEntrada("Selecione a conta destinatária: ");
+            if (destinatario == null) { return; }
 
             System.out.println("Informe o valor da transferência: ");
             resultado = remetente.transferir(Leitor.proximoDouble(), destinatario);
@@ -120,6 +125,11 @@ class Banco {
         }
     }
     
+    /**
+     * Lista todas as contas do sistema numeradas, e pede para o usuário escolher uma.
+     * Se a escolha estiver entre as contas listadas, esta é retornada.
+     * Senão, uma mensagem é mostrada ao usuário, e nulo é retornado.
+     */
     private static Conta obterContaEntrada(String mensagem) {
         System.out.println(mensagem);
         mostrarContas();
@@ -130,8 +140,12 @@ class Banco {
         if (index_resposta <= contasCorrentes.size()) {
             conta = contasCorrentes.get(index_resposta);
         }
-        else {
+        else if (index_resposta <= contasCorrentes.size() + poupancas.size()) {
             conta = poupancas.get(index_resposta - contasCorrentes.size());
+        }
+        else {
+            System.out.println("Conta inválida!");
+            return null;
         }
 
         return conta;
