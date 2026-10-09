@@ -3,7 +3,6 @@ public class Data {
     private int dia, mes, ano;
 
     public Data() {
-
         System.out.print("\tDigite o dia: ");
         this.dia = Leitor.proximoInteiro();
 

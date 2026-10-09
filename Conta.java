@@ -14,7 +14,7 @@ class Conta {
         System.out.print("Informe o número da conta: ");
         this.numero = Leitor.primeiraPalavra();
 
-        System.out.print("Informe a data de criação da conta: ");
+        System.out.print("Informe a data de criação da conta:\n");
         this.criacao = new Data();
 
         System.out.println();

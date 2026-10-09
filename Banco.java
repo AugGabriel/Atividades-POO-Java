@@ -55,7 +55,7 @@ class Banco {
 
             // Escolha do gerente
             System.out.println("Escolha um gerente:");
-            for (int i = 1; i <= gerentes.size() - 1; i++) {
+            for (int i = 1; i <= gerentes.size(); i++) {
                 Gerente gerente = gerentes.get(i - 1);
                 System.out.println(
                     i + ") " + gerente.getMatricula() + " - " + gerente.getNome()
@@ -71,7 +71,7 @@ class Banco {
 
             // Escolha da pessoa
             System.out.println("Escolha uma pessoa:");
-            for (int i = 1; i <= pessoas.size() - 1; i++) {
+            for (int i = 1; i <= pessoas.size(); i++) {
                 Pessoa pessoa = pessoas.get(i - 1);
                 System.out.println(
                     i + ") " + pessoa.getCpf() + " - " + pessoa.getNome()

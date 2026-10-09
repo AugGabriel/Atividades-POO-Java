@@ -8,7 +8,7 @@ class Pessoa {
         System.out.print("Informe o nome: ");
         this.nome = Leitor.proximaLinha();
 
-        System.out.println("Informe a data de nascimento: ");
+        System.out.println("Informe a data de nascimento:\n");
         this.nascimento = new Data();
 
         System.out.print("Informe o sexo: ");
