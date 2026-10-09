@@ -118,7 +118,7 @@ class Banco {
 
             if (entrada == 'a') {
                 conta.extrato();
-                resultado = true;
+                return;
             }
             else if (entrada == 'b') {
                 System.out.println("Informe o valor para depositar: ");
