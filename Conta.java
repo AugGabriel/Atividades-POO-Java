@@ -14,18 +14,20 @@ class Conta {
         System.out.print("Informe o número da conta: ");
         this.numero = Leitor.primeiraPalavra();
 
-        System.out.print("Informe a data de criação da conta:\n");
+        System.out.println("Informe a data de criação da conta:");
         this.criacao = new Data();
 
-        System.out.println();
+        System.out.println("\nConta cadastrada com sucesso!\n");
     }
-
+    
     public Conta(String numero, Pessoa titular, Data criacao, Gerente gerente) {
         this.numero = numero;
         this.titular = titular;
         this.gerente = gerente;
         this.criacao = criacao;
         this.saldo = 0;
+        
+        System.out.println("\nConta cadastrada com sucesso!\n");
     }
 
     protected double disponivel() {

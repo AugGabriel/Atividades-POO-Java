@@ -63,7 +63,7 @@ class Banco {
             }
 
             int escolhaGerente = Leitor.proximoInteiro() - 1;
-            if (escolhaGerente > gerentes.size()) {
+            if (escolhaGerente >= gerentes.size()) {
                 System.out.println("\nEscolha inválida\n");
                 return;
             }
@@ -79,7 +79,7 @@ class Banco {
             }
 
             int escolhaPessoa = Leitor.proximoInteiro() - 1;
-            if (escolhaPessoa > pessoas.size()) {
+            if (escolhaPessoa >= pessoas.size()) {
                 System.out.println("\nEscolha inválida!\n");
                 return;
             }
@@ -122,11 +122,11 @@ class Banco {
             }
             else if (entrada == 'b') {
                 System.out.println("Informe o valor para depositar: ");
-                resultado = conta.depositar(Leitor.proximoInteiro());
+                resultado = conta.depositar(Leitor.proximoDouble());
             }
             else if (entrada == 'c') {
                 System.out.println("Informe o valor para sacar: ");
-                resultado = conta.sacar(Leitor.proximoInteiro());
+                resultado = conta.sacar(Leitor.proximoDouble());
             }
         }
 
@@ -172,10 +172,10 @@ class Banco {
         int index_resposta = Leitor.proximoInteiro() - 1;
         Conta conta;
 
-        if (index_resposta <= contasCorrentes.size()) {
+        if (index_resposta < contasCorrentes.size()) {
             conta = contasCorrentes.get(index_resposta);
         }
-        else if (index_resposta <= contasCorrentes.size() + poupancas.size()) {
+        else if (index_resposta < contasCorrentes.size() + poupancas.size()) {
             conta = poupancas.get(index_resposta - contasCorrentes.size());
         }
         else {
@@ -204,7 +204,6 @@ class Banco {
             Poupanca conta = poupancas.get(i);
             System.out.println(index_resposta + ") " + conta.numero);
         }
-
     }
 }
         
