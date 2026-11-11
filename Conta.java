@@ -8,8 +8,8 @@ class Conta {
 
     public Conta(Gerente gerente, Pessoa titular) {
         this.titular = titular;
-        this.saldo = 0;
         this.gerente = gerente;
+        this.saldo = 0;
 
         System.out.print("Informe o número da conta: ");
         this.numero = Leitor.primeiraPalavra();

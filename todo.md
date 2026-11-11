@@ -1,4 +1,6 @@
 Lugares onde exceções podem surgir:
+  * [ ] Fazer com que construtores com saída se tornem métodos estáticos;
+  * [ ] Modularizar criação de conta;
   * [ ] Entradas de números;
   * [ ] Saldo insuficiente;
   * [ ] Data errada: dia/mês/ano não existe;
