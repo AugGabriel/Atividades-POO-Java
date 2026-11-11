@@ -28,13 +28,8 @@ class Pessoa {
         System.out.println("Nova pessoa criada no sistema.\n");   
     }
 
-    public String getNome() {
-        return this.nome;
-    }
-
-    public String getCpf() {
-        return this.cpf;
-    }
+    public String getNome() { return this.nome; }
+    public String getCpf() { return this.cpf; }
 
     public int idade(Data hoje) {
         int idade = hoje.getAno() - this.nascimento.getAno();

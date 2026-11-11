@@ -43,8 +43,12 @@ public class Gerente extends Pessoa {
     public boolean alterarSenha(String atual, String nova) {
         if (this.validarAcesso(atual)) {
             this.senha = nova;
+            System.out.println("Senha alterada com sucesso!");
+
             return true;
         }
+
+        System.out.println("Não foi possível alterar a senha!");
         return false;
     }
 }
