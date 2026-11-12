@@ -5,20 +5,6 @@ class Conta {
     protected Data criacao;
     protected double saldo;
     protected Gerente gerente;
-
-    public Conta(Gerente gerente, Pessoa titular) {
-        this.titular = titular;
-        this.gerente = gerente;
-        this.saldo = 0;
-
-        System.out.print("Informe o número da conta: ");
-        this.numero = Leitor.primeiraPalavra();
-
-        System.out.println("Informe a data de criação da conta:");
-        this.criacao = new Data();
-
-        System.out.println("\nConta cadastrada com sucesso!\n");
-    }
     
     public Conta(String numero, Pessoa titular, Data criacao, Gerente gerente) {
         this.numero = numero;
@@ -28,6 +14,16 @@ class Conta {
         this.saldo = 0;
         
         System.out.println("\nConta cadastrada com sucesso!\n");
+    }
+
+    public Conta(Gerente gerente, Pessoa titular) {
+        System.out.print("Informe o número da conta: ");
+        String numero = Leitor.primeiraPalavra();
+
+        System.out.println("Informe a data de criação da conta:");
+        Data data = new Data();
+
+        this(numero, titular, data, gerente);
     }
 
     protected double disponivel() {

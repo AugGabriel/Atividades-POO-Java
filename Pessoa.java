@@ -3,22 +3,6 @@ class Pessoa {
     private String nome, cpf;
     private char sexo;
     private Data nascimento;
-
-    public Pessoa() {
-        System.out.print("Informe o nome: ");
-        this.nome = Leitor.proximaLinha();
-
-        System.out.println("Informe a data de nascimento:");
-        this.nascimento = new Data();
-
-        System.out.print("Informe o sexo: ");
-        this.sexo = Leitor.primeiroCaractere();
-
-        System.out.print("Informe o cpf: ");
-        this.cpf = Leitor.primeiraPalavra();
-
-        System.out.println("Nova pessoa criada no sistema.\n");   
-    }
     
     public Pessoa(String nome, Data nascimento, char sexo, String cpf) {
         this.nome = nome;
@@ -26,6 +10,22 @@ class Pessoa {
         this.sexo = sexo;
         this.cpf = cpf;
         System.out.println("Nova pessoa criada no sistema.\n");   
+    }
+
+    public Pessoa() {
+        System.out.print("Informe o nome: ");
+        String nome = Leitor.proximaLinha();
+
+        System.out.println("Informe a data de nascimento:");
+        Data nascimento = new Data();
+
+        System.out.print("Informe o sexo: ");
+        char sexo = Leitor.primeiroCaractere();
+
+        System.out.print("Informe o cpf: ");
+        String cpf = Leitor.primeiraPalavra();
+
+        this(nome, nascimento, sexo, cpf);
     }
 
     public String getNome() { return this.nome; }

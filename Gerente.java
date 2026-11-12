@@ -2,6 +2,14 @@ public class Gerente extends Pessoa {
 
     private String matricula, senha;
 
+    public Gerente(
+        String nome, Data nascimento, char sexo, String cpf, String matricula, String senha
+    ) {
+        super(nome, nascimento, sexo, cpf);
+        this.matricula = matricula;
+        this.senha = senha;
+    }
+
     public Gerente() {
         super();
 
@@ -12,14 +20,6 @@ public class Gerente extends Pessoa {
         System.out.print("Senha temporária: " + this.senha + "\n");
 
         System.out.println();
-    }
-
-    public Gerente(
-        String nome, Data nascimento, char sexo, String cpf, String matricula, String senha
-    ) {
-        super(nome, nascimento, sexo, cpf);
-        this.matricula = matricula;
-        this.senha = senha;
     }
 
     public String getMatricula() { return matricula; }
