@@ -8,7 +8,7 @@ public class Data {
         this.ano = ano;
     }
 
-    public Data() {
+    public Data() throws NumberFormatException {
         System.out.print("\tDigite o dia: ");
         int dia = Leitor.proximoInteiro();
 

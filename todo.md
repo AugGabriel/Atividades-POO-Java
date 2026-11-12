@@ -1,7 +1,10 @@
 Lugares onde exceções podem surgir:
   * [x] Reutilizar lógica dos construtores, para que os que fazem I/O não repitam o que já foi feito;
-  * [ ] Modularizar criação de conta;
-  * [ ] Entradas de números (trocar método para fazer cast?);
+  * [x] Trocar métodos de `Leitor` para fazer cast quando for numérico;
+  * [x] Entradas de números;
+  * [ ] Melhorar estética dos métodos de `Banco`;
+  * [ ] Reutilizar mensagens de saída genéricas;
+  * [ ] Acesso indevido às listas de dados;
   * [ ] Saldo insuficiente;
   * [ ] Data errada: dia/mês/ano não existe;
   * [ ] Poupanca > rendimentos > juro negativo/zero;
@@ -18,3 +21,5 @@ Lugares onde exceções podem surgir:
   * [ ] Saque inválido;
   * [ ] Transferência inválida;
   * [ ] Banco > obterContaEntrada;
+  * [ ] Padronizar formatação de saída de resultado;
+  * [ ] Checar toda a hierarquia de lançamentos de exceção de números.
