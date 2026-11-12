@@ -9,6 +9,11 @@ class Banco {
 
     private static char entrada = ' ';
 
+    /**
+     * Função principal do programa. 
+     * 
+     * Continuamente lê entrada do usuário, até que ele decida sair, e permite que ele efetue cadastros e movimentações.
+     */
     public static void main(String[] args) {
 
         System.out.println("Bem vindo!");
@@ -31,6 +36,11 @@ class Banco {
         Leitor.fechar();
     }
 
+    /**
+     * Menu de cadastros do sistema. 
+     * 
+     * Permite que o usuário cadastre clientes, gerentes, contas correntes e poupanças.
+     */
     public static void cadastro() {
         entrada = Menu.menuCadastro();
 
@@ -43,69 +53,7 @@ class Banco {
             pessoas.add(gerente);
         }
         else if (entrada == 'c' || entrada == 'd') {
-            // Validações
-            if (gerentes.isEmpty()) {
-                System.out.println("\nCadastre um gerente primeiro!\n");
-                return;
-            }
-            if (pessoas.isEmpty()) {
-                System.out.println("Cadastre uma pessoa primeiro!\n");
-                return;
-            }
-
-            // Escolha do gerente
-            System.out.println("Escolha um gerente:");
-            for (int i = 1; i <= gerentes.size(); i++) {
-                Gerente gerente = gerentes.get(i - 1);
-                System.out.println(
-                    i + ") " + gerente.getMatricula() + " - " + gerente.getNome()
-                );
-            }
-        
-            int escolhaGerente;
-            try {
-                escolhaGerente = Leitor.proximoInteiro() - 1;
-            }
-            catch (NumberFormatException exc) {
-                System.out.println("\nEntrada inválida!\n");
-                return;
-            }
-            if (escolhaGerente >= gerentes.size()) {
-                System.out.println("\nEscolha inválida\n");
-                return;
-            }
-            Gerente gerente = gerentes.get(escolhaGerente);
-
-            // Escolha da pessoa
-            System.out.println("Escolha uma pessoa:");
-            for (int i = 1; i <= pessoas.size(); i++) {
-                Pessoa pessoa = pessoas.get(i - 1);
-                System.out.println(
-                    i + ") " + pessoa.getCpf() + " - " + pessoa.getNome()
-                );
-            }
-
-            int escolhaPessoa;
-            try {
-                escolhaPessoa = Leitor.proximoInteiro() - 1;
-            }
-            catch (NumberFormatException exc) {
-                System.out.println("\nEntrada inválida!\n");
-                return;
-            }            
-            if (escolhaPessoa >= pessoas.size()) {
-                System.out.println("\nEscolha inválida!\n");
-                return;
-            }
-            Pessoa titular = pessoas.get(escolhaPessoa);
-            
-            // Menus
-            if (entrada == 'c') {
-                contasCorrentes.add(new ContaCorrente(gerente, titular));
-            }
-            else {
-                poupancas.add(new Poupanca(gerente, titular));
-            }
+            cadastrarConta();
         }
 
         else {
@@ -114,6 +62,11 @@ class Banco {
         }
     }
 
+    /**
+     * Menu de movimentações do sistema.
+     * 
+     * Permite que o usuário efetue movimentações financeiras entre contas do sistema.
+     */
     public static void movimentacao() {
         // Validação de pré-requisitos
         int numeroContas = contasCorrentes.size() + poupancas.size();
@@ -215,6 +168,75 @@ class Banco {
             System.out.println("\nOperação falhou!\n");
         }
     }
+
+    /**
+     * Cadastro de conta. Permite que o usuário crie contas dos tipos corrente e poupança.
+     */
+    private static void cadastrarConta() {
+        // Validações
+        if (gerentes.isEmpty()) {
+            System.out.println("\nCadastre um gerente primeiro!\n");
+            return;
+        }
+        if (pessoas.isEmpty()) {
+            System.out.println("Cadastre uma pessoa primeiro!\n");
+            return;
+        }
+
+        // Escolha do gerente
+        System.out.println("Escolha um gerente:");
+        for (int i = 1; i <= gerentes.size(); i++) {
+            Gerente gerente = gerentes.get(i - 1);
+            System.out.println(
+                i + ") " + gerente.getMatricula() + " - " + gerente.getNome()
+            );
+        }
+    
+        int escolhaGerente;
+        try {
+            escolhaGerente = Leitor.proximoInteiro() - 1;
+        }
+        catch (NumberFormatException exc) {
+            System.out.println("\nEntrada inválida!\n");
+            return;
+        }
+        if (escolhaGerente >= gerentes.size()) {
+            System.out.println("\nEscolha inválida\n");
+            return;
+        }
+        Gerente gerente = gerentes.get(escolhaGerente);
+
+        // Escolha da pessoa
+        System.out.println("Escolha uma pessoa:");
+        for (int i = 1; i <= pessoas.size(); i++) {
+            Pessoa pessoa = pessoas.get(i - 1);
+            System.out.println(
+                i + ") " + pessoa.getCpf() + " - " + pessoa.getNome()
+            );
+        }
+
+        int escolhaPessoa;
+        try {
+            escolhaPessoa = Leitor.proximoInteiro() - 1;
+        }
+        catch (NumberFormatException exc) {
+            System.out.println("\nEntrada inválida!\n");
+            return;
+        }            
+        if (escolhaPessoa >= pessoas.size()) {
+            System.out.println("\nEscolha inválida!\n");
+            return;
+        }
+        Pessoa titular = pessoas.get(escolhaPessoa);
+        
+        // Menus
+        if (entrada == 'c') {
+            contasCorrentes.add(new ContaCorrente(gerente, titular));
+        }
+        else {
+            poupancas.add(new Poupanca(gerente, titular));
+        }
+    }
     
     /**
      * Lista todas as contas do sistema numeradas, e pede para o usuário escolher uma.
@@ -242,6 +264,11 @@ class Banco {
         return conta;
     }
 
+    /**
+     * Imprime todas as contas do banco.
+     * 
+     * As contas são indexadas sequencialmente, começando pelas contas corrente e continuando com as poupança.
+     */
     private static void mostrarContas() {
         int index_resposta = 0;
 
