@@ -22,21 +22,19 @@ public class Leitor {
     }
 
     /**
-     * Interface para o `nextDouble`, porém consome o enter que fica no buffer de entrada.
+     * Lê um número real da entrada do usuário, porém consome o enter que fica no buffer.
+     * Lança `NumberFormatException` se a entrada não for conversível para um número.
      */
-    public static double proximoDouble() {
-        double entrada = leitor.nextDouble();
-        leitor.nextLine();
-        return entrada;
+    public static double proximoDouble() throws NumberFormatException {
+        return Double.parseDouble(leitor.nextLine());
     }
 
     /**
-     * Interface para o `nextInt`, porém consome o enter que fica no buffer de entrada.
+     * Lê um número inteiro da entrada do usuário, porém consome o enter que fica no buffer.
+     * Lança `NumberFormatException` se a entrada não for conversível para um inteiro.
      */
-    public static int proximoInteiro() {
-        int entrada = leitor.nextInt();
-        leitor.nextLine();
-        return entrada;
+    public static int proximoInteiro() throws NumberFormatException {
+        return Integer.parseInt(leitor.nextLine());
     }
 
     public static void fechar() {
