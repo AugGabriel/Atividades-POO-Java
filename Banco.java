@@ -61,8 +61,15 @@ class Banco {
                     i + ") " + gerente.getMatricula() + " - " + gerente.getNome()
                 );
             }
-
-            int escolhaGerente = Leitor.proximoInteiro() - 1;
+        
+            int escolhaGerente;
+            try {
+                escolhaGerente = Leitor.proximoInteiro() - 1;
+            }
+            catch (NumberFormatException exc) {
+                System.out.println("\nEntrada inválida!\n");
+                return;
+            }
             if (escolhaGerente >= gerentes.size()) {
                 System.out.println("\nEscolha inválida\n");
                 return;
@@ -78,7 +85,14 @@ class Banco {
                 );
             }
 
-            int escolhaPessoa = Leitor.proximoInteiro() - 1;
+            int escolhaPessoa;
+            try {
+                escolhaPessoa = Leitor.proximoInteiro() - 1;
+            }
+            catch (NumberFormatException exc) {
+                System.out.println("\nEntrada inválida!\n");
+                return;
+            }            
             if (escolhaPessoa >= pessoas.size()) {
                 System.out.println("\nEscolha inválida!\n");
                 return;
@@ -101,18 +115,26 @@ class Banco {
     }
 
     public static void movimentacao() {
+        // Validação de pré-requisitos
         int numeroContas = contasCorrentes.size() + poupancas.size();
         if (numeroContas == 0) {
             System.out.println("\nCadastre uma conta antes de realizar movimentações!\n");
             return;
         }
 
+        // Declaração de variáveis
         entrada = Menu.menuMovimentacao();
         boolean resultado = false;
+        String mensagemEntradaInvalida = "\nEntrada inválida!\n";
 
+        // Lógica
         if (entrada == 'a' || entrada == 'b' || entrada == 'c') {
-            Conta conta = obterContaEntrada("Selecione a conta: ");
-            if (conta == null) {
+            Conta conta;
+            try {
+                conta = obterContaEntrada("Selecione a conta: ");
+            }
+            catch (NumberFormatException exc) {
+                System.out.println(mensagemEntradaInvalida);
                 return;
             }
 
@@ -122,11 +144,25 @@ class Banco {
             }
             else if (entrada == 'b') {
                 System.out.println("Informe o valor para depositar: ");
-                resultado = conta.depositar(Leitor.proximoDouble());
+
+                try {
+                    resultado = conta.depositar(Leitor.proximoDouble());
+                }
+                catch (NumberFormatException exc) {
+                    System.out.println(mensagemEntradaInvalida);
+                    return;
+                }
             }
             else if (entrada == 'c') {
                 System.out.println("Informe o valor para sacar: ");
-                resultado = conta.sacar(Leitor.proximoDouble());
+
+                try {
+                    resultado = conta.sacar(Leitor.proximoDouble());
+                }
+                catch (NumberFormatException exc) {
+                    System.out.println(mensagemEntradaInvalida);
+                    return;
+                }
             }
         }
 
@@ -138,17 +174,37 @@ class Banco {
                 return;
             }
 
-            Conta remetente = obterContaEntrada("Selecione a conta remetente: ");
-            if (remetente == null) { return; }
-            Conta destinatario = obterContaEntrada("Selecione a conta destinatária: ");
-            if (destinatario == null) { return; }
+            Conta remetente;
+            try {
+                remetente = obterContaEntrada("\"Selecione a conta remetente: ");
+            }
+            catch (NumberFormatException exc) {
+                System.out.println(mensagemEntradaInvalida);
+                return;
+            }
+
+            Conta destinatario;
+            try {
+                destinatario = obterContaEntrada("\"Selecione a conta destinatária: ");
+            }
+            catch (NumberFormatException exc) {
+                System.out.println(mensagemEntradaInvalida);
+                return;
+            }
 
             System.out.println("Informe o valor da transferência: ");
-            resultado = remetente.transferir(Leitor.proximoDouble(), destinatario);
+
+            try {
+                resultado = remetente.transferir(Leitor.proximoDouble(), destinatario);
+            }
+            catch (NumberFormatException exc) {
+                System.out.println(mensagemEntradaInvalida);
+                return;
+            }
         }
         
         else {
-            System.out.println("\nEntrada inválida!\n");
+            System.out.println(mensagemEntradaInvalida);
             return;
         }
 
@@ -165,7 +221,7 @@ class Banco {
      * Se a escolha estiver entre as contas listadas, esta é retornada.
      * Senão, uma mensagem é mostrada ao usuário, e nulo é retornado.
      */
-    private static Conta obterContaEntrada(String mensagem) {
+    private static Conta obterContaEntrada(String mensagem) throws NumberFormatException {
         System.out.println(mensagem);
         mostrarContas();
 
