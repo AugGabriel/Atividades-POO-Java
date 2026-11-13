@@ -50,21 +50,27 @@ class Banco {
      * 
      * Permite que o usuário cadastre clientes, gerentes, contas correntes e poupanças.
      */
-    public static void cadastro() throws EntradaInvalidaException {
+    public static void cadastro() throws EntradaInvalidaException, EscolhaInvalidaException {
         entrada = Menu.menuCadastro();
 
+        // Cadastro de cliente
         if (entrada == 'a') {
             pessoas.add(new Pessoa());
         }
+
+        // Cadastro de gerente
         else if (entrada == 'b') {
             Gerente gerente = new Gerente();
             gerentes.add(gerente);
             pessoas.add(gerente);
         }
+
+        // Cadastro de conta
         else if (entrada == 'c' || entrada == 'd') {
             cadastrarConta();
         }
 
+        // Entrada inválida
         else {
             throw new EntradaInvalidaException();
         }
