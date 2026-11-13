@@ -264,40 +264,43 @@ class Banco {
         return false;
     }
 
-    private static boolean movimentacaoTransferencia(int numeroContas) {
+    private static void movimentacaoTransferencia(int numeroContas) 
+        throws EntradaInvalidaException, OperacaoFalhouException, EscolhaInvalidaException
+    {
+        // Validação dos pré-requisitos
         if (numeroContas < 2) {
-            System.out.println(
-                "\nHá apenas uma conta cadastrada no sistema, e não é possível realizar transferência!\n"
+            throw new OperacaoFalhouException(
+                "\nHá apenas uma conta cadastrada no sistema, e não é possível realizar"
+                + " a transferência!\n"
             );
-            return false;
         }
 
+        // Escolha da conta remetente
         Conta remetente;
         try {
             remetente = obterContaEntrada("\"Selecione a conta remetente: ");
         }
         catch (NumberFormatException exc) {
-            System.out.println("\nEntrada inválida!\n");
-            return false;
+            throw new EntradaInvalidaException();
         }
 
+        // Escolha da conta destinatária
         Conta destinatario;
         try {
             destinatario = obterContaEntrada("\"Selecione a conta destinatária: ");
         }
         catch (NumberFormatException exc) {
-            System.out.println("\nEntrada inválida!\n");
-            return false;
+            throw new EntradaInvalidaException();
         }
 
+        // Operação
         System.out.println("Informe o valor da transferência: ");
 
         try {
-            return remetente.transferir(Leitor.proximoDouble(), destinatario);
+            remetente.transferir(Leitor.proximoDouble(), destinatario);
         }
         catch (NumberFormatException exc) {
-            System.out.println("\nEntrada inválida!\n");
-            return false;
+            throw new EntradaInvalidaException();
         }
     }
 }
