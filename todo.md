@@ -2,6 +2,7 @@ Lugares onde exceções podem surgir:
   * [x] Reutilizar lógica dos construtores, para que os que fazem I/O não repitam o que já foi feito;
   * [x] Trocar métodos de `Leitor` para fazer cast quando for numérico;
   * [x] Entradas de números;
+  * [ ] Métodos private serem os últimos;
   * [ ] Melhorar estética dos métodos de `Banco`;
   * [ ] Reutilizar mensagens de saída genéricas;
   * [ ] Acesso indevido às listas de dados;

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 import excecoes.EntradaInvalidaException;
 import excecoes.EscolhaInvalidaException;
+import excecoes.OperacaoFalhouException;
 
 class Banco {
 
@@ -119,8 +120,22 @@ class Banco {
             return;
         }
 
-        // Escolha do gerente
+        // Escolha do gerente e do titular
+        Gerente gerente = obterGerente();
+        Pessoa titular = obterPessoa();
+        
+        // Menus
+        if (entrada == 'c') {
+            contasCorrentes.add(new ContaCorrente(gerente, titular));
+        }
+        else {
+            poupancas.add(new Poupanca(gerente, titular));
+        }
+    }
+
+    private static Gerente obterGerente() throws EntradaInvalidaException {
         System.out.println("Escolha um gerente:");
+
         for (int i = 1; i <= gerentes.size(); i++) {
             Gerente gerente = gerentes.get(i - 1);
             System.out.println(
@@ -133,17 +148,15 @@ class Banco {
             escolhaGerente = Leitor.proximoInteiro() - 1;
         }
         catch (NumberFormatException exc) {
-            System.out.println("\nEntrada inválida!\n");
-            return;
+            throw new EntradaInvalidaException();
         }
-        if (escolhaGerente >= gerentes.size()) {
-            System.out.println("\nEscolha inválida\n");
-            return;
-        }
-        Gerente gerente = gerentes.get(escolhaGerente);
 
-        // Escolha da pessoa
+        return gerentes.get(escolhaGerente);
+        }
+
+    private static Pessoa obterPessoa() throws EntradaInvalidaException {
         System.out.println("Escolha uma pessoa:");
+
         for (int i = 1; i <= pessoas.size(); i++) {
             Pessoa pessoa = pessoas.get(i - 1);
             System.out.println(
@@ -156,22 +169,10 @@ class Banco {
             escolhaPessoa = Leitor.proximoInteiro() - 1;
         }
         catch (NumberFormatException exc) {
-            System.out.println("\nEntrada inválida!\n");
-            return;
-        }            
-        if (escolhaPessoa >= pessoas.size()) {
-            System.out.println("\nEscolha inválida!\n");
-            return;
+            throw new EntradaInvalidaException();
         }
-        Pessoa titular = pessoas.get(escolhaPessoa);
-        
-        // Menus
-        if (entrada == 'c') {
-            contasCorrentes.add(new ContaCorrente(gerente, titular));
-        }
-        else {
-            poupancas.add(new Poupanca(gerente, titular));
-        }
+
+        return pessoas.get(escolhaPessoa);
     }
     
     /**
