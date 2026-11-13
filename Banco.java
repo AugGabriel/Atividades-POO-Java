@@ -179,13 +179,21 @@ class Banco {
      * Se a escolha estiver entre as contas listadas, esta é retornada.
      * Senão, uma mensagem é mostrada ao usuário, e nulo é retornado.
      */
-    private static Conta obterContaEntrada(String mensagem) throws NumberFormatException {
+    private static Conta obterContaEntrada(String mensagem) 
+        throws EntradaInvalidaException, EscolhaInvalidaException 
+    {
         System.out.println(mensagem);
         mostrarContas();
 
-        int index_resposta = Leitor.proximoInteiro() - 1;
+        int index_resposta;
+        try {
+            index_resposta = Leitor.proximoInteiro() - 1;
+        }
+        catch (NumberFormatException exc) {
+            throw new EntradaInvalidaException();
+        }
+        
         Conta conta;
-
         if (index_resposta < contasCorrentes.size()) {
             conta = contasCorrentes.get(index_resposta);
         }
@@ -193,8 +201,7 @@ class Banco {
             conta = poupancas.get(index_resposta - contasCorrentes.size());
         }
         else {
-            System.out.println("\nConta inválida!\n");
-            return null;
+            throw new EscolhaInvalidaException();
         }
 
         return conta;
