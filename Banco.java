@@ -26,17 +26,19 @@ class Banco {
             entrada = Menu.menuInicial();
             
             try {
-            if (entrada == '1') {
-                cadastro();
-            }
-            else if (entrada == '2') {
-                movimentacao();
-            }
-            else if (entrada != '0') {
+                if (entrada == '1') {
+                    cadastro();
+                }
+                else if (entrada == '2') {
+                    movimentacao();
+                }
+                else if (entrada != '0') {
                     throw new EscolhaInvalidaException();
                 }
             }
-            catch (EntradaInvalidaException | EscolhaInvalidaException exc) {
+            catch (
+                EntradaInvalidaException | EscolhaInvalidaException | OperacaoFalhouException exc
+            ) {
                 System.out.println(exc.getMessage());
             }
         }
@@ -156,7 +158,7 @@ class Banco {
         }
 
         return gerentes.get(escolhaGerente);
-        }
+    }
 
     private static Pessoa obterPessoa() throws EntradaInvalidaException {
         System.out.println("Escolha uma pessoa:");
@@ -242,27 +244,27 @@ class Banco {
 
         try {
             // Extrato
-        if (entrada == 'a') {
-            conta.extrato();
-        }
+            if (entrada == 'a') {
+                conta.extrato();
+            }
 
             // Depósito
-        else if (entrada == 'b') {
-            System.out.println("Informe o valor para depositar: ");
+            else if (entrada == 'b') {
+                System.out.println("Informe o valor para depositar: ");
 
                 conta.depositar(Leitor.proximoDouble());
                 System.out.println("\nDepósito realizado com sucesso!\n");
             }
 
             // Saque
-        else if (entrada == 'c') {
-            System.out.println("Informe o valor para sacar: ");
+            else if (entrada == 'c') {
+                System.out.println("Informe o valor para sacar: ");
 
                 conta.sacar(Leitor.proximoDouble());
                 System.out.println("\nSaque realizado com sucesso!\n");
             }
-            }
-            catch (NumberFormatException exc) {
+        }
+        catch (NumberFormatException exc) {
             throw new EntradaInvalidaException();
         }
     }
