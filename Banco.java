@@ -75,7 +75,9 @@ class Banco {
      * 
      * Permite que o usuário efetue movimentações financeiras entre contas do sistema.
      */
-    public static void movimentacao() throws EntradaInvalidaException {
+    public static void movimentacao() 
+        throws EntradaInvalidaException, EscolhaInvalidaException, OperacaoFalhouException
+    {
         // Validação de pré-requisitos
         int numeroContas = contasCorrentes.size() + poupancas.size();
         if (numeroContas == 0) {
@@ -85,32 +87,26 @@ class Banco {
 
         // Declaração de variáveis
         entrada = Menu.menuMovimentacao();
-        boolean resultado = false;
 
         // Lógica
         if (entrada == 'a' || entrada == 'b' || entrada == 'c') {
-            resultado = movimentacaoUmaConta();
+            movimentacaoUmaConta();
         }
         else if (entrada == 'd') {
-            resultado = movimentacaoTransferencia(numeroContas);
+            movimentacaoTransferencia(numeroContas);
         }
         else {
             throw new EntradaInvalidaException();
-        }
-
-        if (resultado) {
-            System.out.println("\nOperação realizada com sucesso!\n");
-        }
-        else {
-            System.out.println("\nOperação falhou!\n");
         }
     }
 
     /**
      * Cadastro de conta. Permite que o usuário crie contas dos tipos corrente e poupança.
      */
-    private static void cadastrarConta() {
-        // Validações
+    private static void cadastrarConta() 
+        throws EntradaInvalidaException, EscolhaInvalidaException 
+    {
+        // Validação de pré-requisitos
         if (gerentes.isEmpty()) {
             System.out.println("\nCadastre um gerente primeiro!\n");
             return;
@@ -127,9 +123,11 @@ class Banco {
         // Menus
         if (entrada == 'c') {
             contasCorrentes.add(new ContaCorrente(gerente, titular));
+            System.out.println("\nConta corrente cadastrada com sucesso!\n");
         }
         else {
             poupancas.add(new Poupanca(gerente, titular));
+            System.out.println("\nConta poupança cadastrada com sucesso!\n");
         }
     }
 
