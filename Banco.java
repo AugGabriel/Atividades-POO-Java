@@ -225,43 +225,34 @@ class Banco {
         }
     }
 
-    private static boolean movimentacaoUmaConta() {
-        Conta conta;
-        try {
-            conta = obterContaEntrada("Selecione a conta: ");
-        }
-        catch (NumberFormatException exc) {
-            System.out.println("\nEntrada inválida!\n");
-            return false;
-        }
+    private static void movimentacaoUmaConta() throws EntradaInvalidaException, EscolhaInvalidaException {
+        Conta conta = obterContaEntrada("Selecione a conta: ");
 
+        try {
+            // Extrato
         if (entrada == 'a') {
             conta.extrato();
-            return false;
         }
+
+            // Depósito
         else if (entrada == 'b') {
             System.out.println("Informe o valor para depositar: ");
 
-            try {
-                return conta.depositar(Leitor.proximoDouble());
+                conta.depositar(Leitor.proximoDouble());
+                System.out.println("\nDepósito realizado com sucesso!\n");
             }
-            catch (NumberFormatException exc) {
-                System.out.println("\nEntrada inválida!\n");
-                return false;
-            }
-        }
+
+            // Saque
         else if (entrada == 'c') {
             System.out.println("Informe o valor para sacar: ");
 
-            try {
-                return conta.sacar(Leitor.proximoDouble());
+                conta.sacar(Leitor.proximoDouble());
+                System.out.println("\nSaque realizado com sucesso!\n");
+            }
             }
             catch (NumberFormatException exc) {
-                System.out.println("\nEntrada inválida!\n");
-                return false;
-            }
+            throw new EntradaInvalidaException();
         }
-        return false;
     }
 
     private static void movimentacaoTransferencia(int numeroContas) 
