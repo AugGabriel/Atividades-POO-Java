@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+import excecoes.EntradaInvalidaException;
+import excecoes.EscolhaInvalidaException;
+
 class Banco {
 
     private static ArrayList<Pessoa> pessoas = new ArrayList<>();
@@ -21,6 +24,7 @@ class Banco {
         while (entrada != '0') {
             entrada = Menu.menuInicial();
             
+            try {
             if (entrada == '1') {
                 cadastro();
             }
@@ -28,7 +32,11 @@ class Banco {
                 movimentacao();
             }
             else if (entrada != '0') {
-                System.out.println("\nOpção inválida!\n");
+                    throw new EscolhaInvalidaException();
+                }
+            }
+            catch (EntradaInvalidaException | EscolhaInvalidaException exc) {
+                System.out.println(exc.getMessage());
             }
         }
 
@@ -41,7 +49,7 @@ class Banco {
      * 
      * Permite que o usuário cadastre clientes, gerentes, contas correntes e poupanças.
      */
-    public static void cadastro() {
+    public static void cadastro() throws EntradaInvalidaException {
         entrada = Menu.menuCadastro();
 
         if (entrada == 'a') {
@@ -57,8 +65,7 @@ class Banco {
         }
 
         else {
-            System.out.println("\nEntrada inválida!\n");
-            return;
+            throw new EntradaInvalidaException();
         }
     }
 
@@ -67,7 +74,7 @@ class Banco {
      * 
      * Permite que o usuário efetue movimentações financeiras entre contas do sistema.
      */
-    public static void movimentacao() {
+    public static void movimentacao() throws EntradaInvalidaException {
         // Validação de pré-requisitos
         int numeroContas = contasCorrentes.size() + poupancas.size();
         if (numeroContas == 0) {
@@ -78,7 +85,6 @@ class Banco {
         // Declaração de variáveis
         entrada = Menu.menuMovimentacao();
         boolean resultado = false;
-        String mensagemEntradaInvalida = "\nEntrada inválida!\n";
 
         // Lógica
         if (entrada == 'a' || entrada == 'b' || entrada == 'c') {
@@ -88,8 +94,7 @@ class Banco {
             resultado = movimentacaoTransferencia(numeroContas);
         }
         else {
-            System.out.println(mensagemEntradaInvalida);
-            return;
+            throw new EntradaInvalidaException();
         }
 
         if (resultado) {
