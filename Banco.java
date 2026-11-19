@@ -139,6 +139,78 @@ class Banco {
         }
     }
 
+    private static void movimentacaoUmaConta() throws EntradaInvalidaException, EscolhaInvalidaException {
+        Conta conta = obterContaEntrada("Selecione a conta: ");
+
+        try {
+            // Extrato
+            if (entrada == 'a') {
+                conta.extrato();
+            }
+
+            // Depósito
+            else if (entrada == 'b') {
+                System.out.println("Informe o valor para depositar: ");
+
+                conta.depositar(Leitor.proximoDouble());
+                System.out.println("\nDepósito realizado com sucesso!\n");
+            }
+
+            // Saque
+            else if (entrada == 'c') {
+                System.out.println("Informe o valor para sacar: ");
+
+                conta.sacar(Leitor.proximoDouble());
+                System.out.println("\nSaque realizado com sucesso!\n");
+            }
+        }
+        catch (NumberFormatException exc) {
+            throw new EntradaInvalidaException();
+        }
+    }
+
+    private static void movimentacaoTransferencia(int numeroContas) 
+        throws EntradaInvalidaException, OperacaoFalhouException, EscolhaInvalidaException
+    {
+        // Validação dos pré-requisitos
+        if (numeroContas < 2) {
+            throw new OperacaoFalhouException(
+                "\nHá apenas uma conta cadastrada no sistema, e não é possível realizar"
+                + " a transferência!\n"
+            );
+        }
+
+        // Escolha da conta remetente
+        Conta remetente;
+        try {
+            remetente = obterContaEntrada("\"Selecione a conta remetente: ");
+        }
+        catch (NumberFormatException exc) {
+            throw new EntradaInvalidaException();
+        }
+
+        // Escolha da conta destinatária
+        Conta destinatario;
+        try {
+            destinatario = obterContaEntrada("\"Selecione a conta destinatária: ");
+        }
+        catch (NumberFormatException exc) {
+            throw new EntradaInvalidaException();
+        }
+
+        // Operação
+        System.out.println("Informe o valor da transferência: ");
+
+        try {
+            remetente.transferir(Leitor.proximoDouble(), destinatario);
+        }
+        catch (NumberFormatException exc) {
+            throw new EntradaInvalidaException();
+        }
+
+        System.out.println("\nTransferência realizada com sucesso!\n");
+    }
+
     private static Gerente obterGerente() throws EntradaInvalidaException {
         System.out.println("Escolha um gerente:");
 
@@ -237,78 +309,6 @@ class Banco {
             Poupanca conta = poupancas.get(i);
             System.out.println(index_resposta + ") " + conta.numero);
         }
-    }
-
-    private static void movimentacaoUmaConta() throws EntradaInvalidaException, EscolhaInvalidaException {
-        Conta conta = obterContaEntrada("Selecione a conta: ");
-
-        try {
-            // Extrato
-            if (entrada == 'a') {
-                conta.extrato();
-            }
-
-            // Depósito
-            else if (entrada == 'b') {
-                System.out.println("Informe o valor para depositar: ");
-
-                conta.depositar(Leitor.proximoDouble());
-                System.out.println("\nDepósito realizado com sucesso!\n");
-            }
-
-            // Saque
-            else if (entrada == 'c') {
-                System.out.println("Informe o valor para sacar: ");
-
-                conta.sacar(Leitor.proximoDouble());
-                System.out.println("\nSaque realizado com sucesso!\n");
-            }
-        }
-        catch (NumberFormatException exc) {
-            throw new EntradaInvalidaException();
-        }
-    }
-
-    private static void movimentacaoTransferencia(int numeroContas) 
-        throws EntradaInvalidaException, OperacaoFalhouException, EscolhaInvalidaException
-    {
-        // Validação dos pré-requisitos
-        if (numeroContas < 2) {
-            throw new OperacaoFalhouException(
-                "\nHá apenas uma conta cadastrada no sistema, e não é possível realizar"
-                + " a transferência!\n"
-            );
-        }
-
-        // Escolha da conta remetente
-        Conta remetente;
-        try {
-            remetente = obterContaEntrada("\"Selecione a conta remetente: ");
-        }
-        catch (NumberFormatException exc) {
-            throw new EntradaInvalidaException();
-        }
-
-        // Escolha da conta destinatária
-        Conta destinatario;
-        try {
-            destinatario = obterContaEntrada("\"Selecione a conta destinatária: ");
-        }
-        catch (NumberFormatException exc) {
-            throw new EntradaInvalidaException();
-        }
-
-        // Operação
-        System.out.println("Informe o valor da transferência: ");
-
-        try {
-            remetente.transferir(Leitor.proximoDouble(), destinatario);
-        }
-        catch (NumberFormatException exc) {
-            throw new EntradaInvalidaException();
-        }
-
-        System.out.println("\nTransferência realizada com sucesso!\n");
     }
 }
         
