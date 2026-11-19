@@ -4,7 +4,6 @@
 * [x] Métodos private serem os últimos;
 * [x] Melhorar estética dos métodos de `Banco`;
 * [x] Reutilizar mensagens de saída genéricas;
-* [ ] Implementar `Sistema`;
 * [ ] Acesso indevido às listas de dados;
 * [ ] Saldo insuficiente;
 * [ ] Data errada: dia/mês/ano não existe;

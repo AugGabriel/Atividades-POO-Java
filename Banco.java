@@ -6,10 +6,10 @@ import excecoes.OperacaoFalhouException;
 
 class Banco {
 
-    private static ArrayList<Pessoa> pessoas = new ArrayList<>();
-    private static ArrayList<Gerente> gerentes = new ArrayList<>();
-    private static ArrayList<ContaCorrente> contasCorrentes = new ArrayList<>();
-    private static ArrayList<Poupanca> poupancas = new ArrayList<>();
+    private static List<Pessoa> pessoas = new ArrayList<>();
+    private static List<Gerente> gerentes = new ArrayList<>();
+    private static List<ContaCorrente> contasCorrentes = new ArrayList<>();
+    private static List<Poupanca> poupancas = new ArrayList<>();
 
     /**
      * Função principal do programa. 
@@ -111,7 +111,7 @@ class Banco {
      * Cadastro de conta. Permite que o usuário crie contas dos tipos corrente e poupança.
      */
     private static void cadastrarConta(boolean ehContaCorrente) 
-        throws EntradaInvalidaException, EscolhaInvalidaException 
+        throws EntradaInvalidaException, EscolhaInvalidaException
     {
         // Validação de pré-requisitos
         if (gerentes.isEmpty()) {
@@ -212,7 +212,10 @@ class Banco {
         System.out.println("\nTransferência realizada com sucesso!\n");
     }
 
-    private static Gerente obterGerente() throws EntradaInvalidaException {
+    private static Gerente obterGerente() 
+        throws EntradaInvalidaException, EscolhaInvalidaException 
+    {
+        // Listagem dos gerentes
         System.out.println("Escolha um gerente:");
 
         for (int i = 1; i <= gerentes.size(); i++) {
@@ -222,6 +225,7 @@ class Banco {
             );
         }
     
+        // Entrada do usuário e verificação de tipo inteiro
         int escolhaGerente;
         try {
             escolhaGerente = Leitor.proximoInteiro() - 1;
@@ -230,10 +234,21 @@ class Banco {
             throw new EntradaInvalidaException();
         }
 
-        return gerentes.get(escolhaGerente);
+        // Acesso às informações cadastradas e verificação de registro existente
+        Gerente gerente;
+        try {
+            gerente = gerentes.get(escolhaGerente);
+        }
+        catch (IndexOutOfBoundsException exc) {
+            throw new EscolhaInvalidaException();
+        }
+
+        // retorno
+        return gerente;
     }
 
     private static Pessoa obterPessoa() throws EntradaInvalidaException {
+        // Listagem das pessoas
         System.out.println("Escolha uma pessoa:");
 
         for (int i = 1; i <= pessoas.size(); i++) {
@@ -243,6 +258,7 @@ class Banco {
             );
         }
 
+        // Entrada do usuário e verificação de tipo inteiro
         int escolhaPessoa;
         try {
             escolhaPessoa = Leitor.proximoInteiro() - 1;
@@ -251,7 +267,17 @@ class Banco {
             throw new EntradaInvalidaException();
         }
 
-        return pessoas.get(escolhaPessoa);
+        // Acesso às pessoas cadastradas e verificação de registro existente
+        Pessoa pessoa;
+        try {
+            pessoa = pessoas.get(escolhaPessoa);
+        }
+        catch (IndexOutOfBoundsException exc) {
+            throw new EscolhaInvalidaException();
+        }
+
+        // Retorno
+        return pessoa;
     }
     
     /**
