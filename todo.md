@@ -3,7 +3,8 @@
 * [x] Entradas de números;
 * [x] Métodos private serem os últimos;
 * [x] Melhorar estética dos métodos de `Banco`;
-* [ ] Reutilizar mensagens de saída genéricas;
+* [x] Reutilizar mensagens de saída genéricas;
+* [ ] Implementar `Sistema`;
 * [ ] Acesso indevido às listas de dados;
 * [ ] Saldo insuficiente;
 * [ ] Data errada: dia/mês/ano não existe;

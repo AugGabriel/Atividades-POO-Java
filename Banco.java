@@ -11,8 +11,6 @@ class Banco {
     private static ArrayList<ContaCorrente> contasCorrentes = new ArrayList<>();
     private static ArrayList<Poupanca> poupancas = new ArrayList<>();
 
-    private static char entrada = ' ';
-
     /**
      * Função principal do programa. 
      * 
@@ -21,6 +19,7 @@ class Banco {
     public static void main(String[] args) {
 
         System.out.println("Bem vindo!");
+        char entrada = ' ';
 
         while (entrada != '0') {
             entrada = Menu.menuInicial();
@@ -53,7 +52,7 @@ class Banco {
      * Permite que o usuário cadastre clientes, gerentes, contas correntes e poupanças.
      */
     public static void cadastro() throws EntradaInvalidaException, EscolhaInvalidaException {
-        entrada = Menu.menuCadastro();
+        char entrada = Menu.menuCadastro();
 
         // Cadastro de cliente
         if (entrada == 'a') {
@@ -69,7 +68,7 @@ class Banco {
 
         // Cadastro de conta
         else if (entrada == 'c' || entrada == 'd') {
-            cadastrarConta();
+            cadastrarConta(entrada == 'c');
         }
 
         // Entrada inválida
@@ -94,11 +93,11 @@ class Banco {
         }
 
         // Declaração de variáveis
-        entrada = Menu.menuMovimentacao();
+        char entrada = Menu.menuMovimentacao();
 
         // Lógica
         if (entrada == 'a' || entrada == 'b' || entrada == 'c') {
-            movimentacaoUmaConta();
+            movimentacaoUmaConta(entrada);
         }
         else if (entrada == 'd') {
             movimentacaoTransferencia(numeroContas);
@@ -111,7 +110,7 @@ class Banco {
     /**
      * Cadastro de conta. Permite que o usuário crie contas dos tipos corrente e poupança.
      */
-    private static void cadastrarConta() 
+    private static void cadastrarConta(boolean ehContaCorrente) 
         throws EntradaInvalidaException, EscolhaInvalidaException 
     {
         // Validação de pré-requisitos
@@ -129,7 +128,7 @@ class Banco {
         Pessoa titular = obterPessoa();
         
         // Menus
-        if (entrada == 'c') {
+        if (ehContaCorrente) {
             contasCorrentes.add(new ContaCorrente(gerente, titular));
             System.out.println("\nConta corrente cadastrada com sucesso!\n");
         }
@@ -139,7 +138,9 @@ class Banco {
         }
     }
 
-    private static void movimentacaoUmaConta() throws EntradaInvalidaException, EscolhaInvalidaException {
+    private static void movimentacaoUmaConta(char entrada)
+        throws EntradaInvalidaException, EscolhaInvalidaException 
+    {
         Conta conta = obterContaEntrada("Selecione a conta: ");
 
         try {
